@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import ReactMarkdown from "react-markdown";
 
-const API_URL = "http://localhost:5000/api/surveys";
-const AI_URL = "http://localhost:5000/api/ai";
-const AUTH_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://surveyly-backend.onrender.com/api/surveys";
+const AI_URL = "https://surveyly-backend.onrender.com/api/ai";
+const AUTH_URL = "https://surveyly-backend.onrender.com/api/auth";
 
 function App() {
   const [page, setPage] = useState("dashboard");
