@@ -240,6 +240,12 @@ async function loadSurveys() {
 }
 
 function logout() {
+  setTitle("");
+setDescription("");
+setQuestions([]);
+setSavedSurvey(null);
+setSurveyId("");
+setAnswers({});
   localStorage.removeItem("surveylyToken");
   localStorage.removeItem("surveylyUser");
 
@@ -314,7 +320,22 @@ async function generateSummary() {
 
    await loadResults(survey._id);
   }
-
+function startNewSurvey() {
+  setTitle("");
+  setDescription("");
+  setQuestion("");
+  setQuestionType("Text");
+  setOptions(["", ""]);
+  setQuestions([]);
+  setSurveyId("");
+  setSavedSurvey(null);
+  setAnswers({});
+  setResponseCount(0);
+  setAiTopic("");
+  setAiSummary("");
+  setResultsData([]);
+  setPage("create");
+}
   function createSurvey() {
     if (!title.trim()) {
       alert("Please enter a survey title");
@@ -809,7 +830,7 @@ return (
                 ? "menu-item active"
                 : "menu-item"
             }
-            onClick={() => setPage("create")}
+            onClick={startNewSurvey}
           >
             <span>＋</span> Create Survey
           </button>
@@ -858,7 +879,7 @@ return (
                   Create surveys and understand your responses.
                 </p>
               </div>
-              <button className="primary-btn" onClick={() => setPage("create")}>
+              <button className="primary-btn" onClick={startNewSurvey}>
                 + Create Survey
               </button>
             </header>
@@ -918,8 +939,7 @@ return (
                 <p>Create your first survey and start collecting responses.</p>
                 <button
                   className="primary-btn"
-                  onClick={() => setPage("create")}
-                >
+onClick={startNewSurvey}                >
                   Create your first survey
                 </button>
               </div>
@@ -1430,7 +1450,7 @@ return (
                 <h1>My Surveys</h1>
                 <p className="muted">Manage all your surveys in one place.</p>
               </div>
-              <button className="primary-btn" onClick={() => setPage("create")}>
+              <button className="primary-btn" onClick={startNewSurvey}>
                 + Create Survey
               </button>
             </div>
@@ -1487,7 +1507,7 @@ return (
                 <div className="empty-icon">▤</div>
                 <h2>No surveys created</h2>
                 <p>Your created surveys will appear here.</p>
-                <button className="primary-btn" onClick={() => setPage("create")}>
+                <button className="primary-btn" onClick={startNewSurvey}>
                   Create Survey
                 </button>
               </div>
